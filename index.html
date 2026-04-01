@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iTeacherAcademy | Master English with Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                DEFAULT: '#10b981',
+                dark: '#059669',
+                light: '#d1fae5',
+              }
+            },
+            animation: {
+              'float': 'float 4s ease-in-out infinite',
+              'float-delayed': 'float-delayed 5s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              'float-delayed': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          scroll-behavior: smooth;
+        }
+        body {
+          @apply font-sans text-slate-900 bg-white;
+        }
+      }
+
+      @layer components {
+        .glass-card {
+          @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+        }
+        .section-padding {
+          @apply py-20 px-6 md:px-12 lg:px-24;
+        }
+        .heading-lg {
+          @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight;
+        }
+        .heading-md {
+          @apply text-3xl md:text-4xl font-bold tracking-tight;
+        }
+        .text-muted {
+          @apply text-slate-600 leading-relaxed;
+        }
+        .reveal-left, .reveal-right, .reveal-up, .reveal-scale {
+          opacity: 0;
+          transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-left { transform: translateX(-50px); }
+        .reveal-right { transform: translateX(50px); }
+        .reveal-up { transform: translateY(30px); }
+        .reveal-scale { transform: scale(0.9); }
+        
+        .reveal-left.active, .reveal-right.active, .reveal-up.active, .reveal-scale.active {
+          opacity: 1;
+          transform: translate(0) scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4 md:py-5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+        <a href="#" class="text-xl sm:text-2xl font-bold"><span class="text-primary">i</span>Teacher<span class="text-primary">Academy</span></a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-6 lg:gap-8">
+          <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a>
+          <a href="#courses" class="text-sm font-medium hover:text-primary transition-colors">Courses</a>
+          <a href="#results" class="text-sm font-medium hover:text-primary transition-colors">Results</a>
+          <a href="#reviews" class="text-sm font-medium hover:text-primary transition-colors">Reviews</a>
+          <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+          <a href="tel:+998975820200" class="bg-primary text-white px-4 lg:px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-dark transition-all flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            +998 97 582 02 00
+          </a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button id="mobile-menu-toggle" class="md:hidden text-slate-900 p-2">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-white shadow-2xl p-6 md:hidden flex flex-col gap-4 border-t border-slate-100">
+        <a href="#about" class="mobile-link text-lg font-medium py-3 border-b border-slate-50">About</a>
+        <a href="#courses" class="mobile-link text-lg font-medium py-3 border-b border-slate-50">Courses</a>
+        <a href="#results" class="mobile-link text-lg font-medium py-3 border-b border-slate-50">Results</a>
+        <a href="#reviews" class="mobile-link text-lg font-medium py-3 border-b border-slate-50">Reviews</a>
+        <a href="#contact" class="mobile-link text-lg font-medium py-3 border-b border-slate-50">Contact</a>
+        <a href="tel:+998975820200" class="bg-primary text-white px-6 py-4 rounded-2xl text-center font-bold mt-2 flex justify-center items-center gap-2 shadow-lg shadow-primary/20">
+          <i data-lucide="phone" class="w-5 h-5"></i>
+          Call Now
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-primary-light/30 rounded-bl-[100px] hidden lg:block"></div>
+        <div class="absolute -top-20 -left-20 -z-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal-left text-center lg:text-left">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Master English with <span class="text-primary">Confidence</span> at iTeacherAcademy
+            </h1>
+            <p class="text-base md:text-lg text-muted mb-10 max-w-lg mx-auto lg:mx-0">
+              Unlock your potential with iTeacherAcademy. We provide high-quality, results-driven English courses designed to help you succeed in IELTS and beyond.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contact" class="bg-primary text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group">
+                Join Now
+                <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+              <a href="#contact" class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                Contact Us
+              </a>
+            </div>
+            
+            <div class="mt-8 md:mt-12 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div class="flex -space-x-3">
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden">
+                  <img src="https://picsum.photos/seed/learn1/100/100" alt="Student" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden">
+                  <img src="https://picsum.photos/seed/learn2/100/100" alt="Student" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden">
+                  <img src="https://picsum.photos/seed/learn3/100/100" alt="Student" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden">
+                  <img src="https://picsum.photos/seed/learn4/100/100" alt="Student" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+              </div>
+              <div class="text-center sm:text-left">
+                <div class="flex justify-center sm:justify-start text-yellow-400 mb-1">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+                <p class="text-xs sm:text-sm font-semibold">Trusted by Our Students</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative reveal-scale mt-12 lg:mt-0">
+            <div class="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-auto">
+              <img src="https://picsum.photos/seed/campus/800/1000" alt="Learning English" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+            </div>
+            <!-- Floating Stats -->
+            <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 z-20 glass-card p-4 sm:p-6 rounded-3xl animate-float">
+              <div class="flex items-center gap-3 sm:gap-4">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">
+                  <i data-lucide="check-circle-2" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </div>
+                <div>
+                  <p class="text-xl sm:text-2xl font-bold">98%</p>
+                  <p class="text-[10px] text-muted font-medium uppercase tracking-wider">Success Rate</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="absolute top-6 -right-4 sm:top-10 sm:-right-6 z-20 glass-card p-4 sm:p-6 rounded-3xl animate-float-delayed">
+              <div class="flex items-center gap-3 sm:gap-4">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-500">
+                  <i data-lucide="users" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </div>
+                <div>
+                  <p class="text-xl sm:text-2xl font-bold">15+</p>
+                  <p class="text-[10px] text-muted font-medium uppercase tracking-wider">Expert Teachers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section-padding bg-slate-50">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div class="order-2 lg:order-1 reveal-left">
+            <p class="text-primary font-bold uppercase tracking-widest text-sm mb-4">About iTeacherAcademy</p>
+            <h2 class="heading-md mb-6">Your Gateway to Global Opportunities</h2>
+            <p class="text-muted mb-8">
+              Founded with a mission to bridge the communication gap, iTeacherAcademy has become a leading name in English education. We don't just teach grammar; we build confidence and open doors to international success.
+            </p>
+            <div class="space-y-4 mb-10">
+              <div class="flex items-start gap-3">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                </div>
+                <p class="font-medium text-slate-700">Personalized learning paths for every student</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                </div>
+                <p class="font-medium text-slate-700">Modern teaching methodologies and tools</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                </div>
+                <p class="font-medium text-slate-700">Focus on practical communication skills</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="mt-1 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                </div>
+                <p class="font-medium text-slate-700">Proven track record of high IELTS scores</p>
+              </div>
+            </div>
+            <a href="#courses" class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+              Explore Our Courses <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+          
+          <div class="order-1 lg:order-2 grid grid-cols-2 gap-3 sm:gap-4 reveal-right">
+            <div class="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
+              <img src="https://picsum.photos/seed/classroom/400/500" alt="Classroom" class="rounded-2xl sm:rounded-3xl shadow-lg aspect-[4/5] object-cover" referrerPolicy="no-referrer">
+              <div class="bg-primary p-4 sm:p-8 rounded-2xl sm:rounded-3xl text-white">
+                <p class="text-2xl sm:text-4xl font-bold mb-1">5+</p>
+                <p class="text-[10px] sm:text-sm opacity-80 font-medium">Years of Excellence</p>
+              </div>
+            </div>
+            <div class="space-y-3 sm:space-y-4">
+              <div class="bg-slate-900 p-4 sm:p-8 rounded-2xl sm:rounded-3xl text-white">
+                <p class="text-2xl sm:text-4xl font-bold mb-1">100%</p>
+                <p class="text-[10px] sm:text-sm opacity-80 font-medium">Satisfaction</p>
+              </div>
+              <img src="https://picsum.photos/seed/library/400/500" alt="Student" class="rounded-2xl sm:rounded-3xl shadow-lg aspect-[4/5] object-cover" referrerPolicy="no-referrer">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Courses Section -->
+      <section id="courses" class="section-padding">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16 reveal-up">
+            <p class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Our Programs</p>
+            <h2 class="heading-md mb-4">Choose the Right Course for You</h2>
+            <p class="text-muted">We offer a variety of programs tailored to different needs and goals. Whether you're a beginner or looking for advanced certification.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- General English -->
+            <div class="bg-white p-8 rounded-[32px] border border-slate-100 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all group reveal-up">
+              <div class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i data-lucide="book-open" class="w-7 h-7 text-blue-500"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">General English</h3>
+              <p class="text-muted text-sm mb-6">Master the basics and improve your daily communication skills from A1 to C1 levels.</p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">3-6 Months</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">All Levels</span>
+              </div>
+            </div>
+            <!-- IELTS -->
+            <div class="bg-white p-8 rounded-[32px] border border-slate-100 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all group reveal-up" style="transition-delay: 0.1s">
+              <div class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i data-lucide="award" class="w-7 h-7 text-primary"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">IELTS Preparation</h3>
+              <p class="text-muted text-sm mb-6">Intensive training focused on all four modules to help you achieve your desired band score.</p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">2-4 Months</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">Intermediate+</span>
+              </div>
+            </div>
+            <!-- Kids -->
+            <div class="bg-white p-8 rounded-[32px] border border-slate-100 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all group reveal-up" style="transition-delay: 0.2s">
+              <div class="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <i data-lucide="users" class="w-7 h-7 text-orange-500"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Kids English</h3>
+              <p class="text-muted text-sm mb-6">Fun and interactive English lessons designed specifically for young learners.</p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">Ongoing</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 px-2 py-1 rounded-md text-slate-500">Ages 7-12</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <section id="results" class="section-padding bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+          <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal-left">
+              <p class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Expert Faculty</p>
+              <h2 class="text-4xl md:text-5xl font-bold mb-6">Real Results from Our Teachers</h2>
+              <p class="text-slate-400 mb-10 text-lg">
+                Our instructors lead by example, achieving top-tier scores in international exams to ensure you receive the highest level of guidance.
+              </p>
+              <div class="grid grid-cols-2 gap-8">
+                <div>
+                  <p class="text-5xl font-bold text-primary mb-2">High</p>
+                  <p class="text-slate-400 font-medium">Success Rate</p>
+                </div>
+                <div>
+                  <p class="text-5xl font-bold text-primary mb-2">Expert</p>
+                  <p class="text-slate-400 font-medium">Guidance</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-right">
+              <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg shadow-primary/20">8.5</div>
+                <h4 class="font-bold text-lg mb-1">Muzaffar Abdullaev</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">IELTS Academic</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg shadow-primary/20">8.0</div>
+                <h4 class="font-bold text-lg mb-1">Tursunov Mansur</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">IELTS Academic</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg shadow-primary/20">8.0</div>
+                <h4 class="font-bold text-lg mb-1">Tursunov Muhammadyusuf</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">IELTS Academic</p>
+              </div>
+              <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg shadow-primary/20">7.5</div>
+                <h4 class="font-bold text-lg mb-1">Ismoilov Maxmudxon</h4>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">IELTS Academic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews Section -->
+      <section id="reviews" class="section-padding">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-16 reveal-up">
+            <p class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Testimonials</p>
+            <h2 class="heading-md mb-4">What Our Students Say</h2>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-slate-50 p-8 rounded-[32px] relative reveal-up">
+              <div class="flex text-yellow-400 mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="text-slate-700 italic mb-8">"In my opinion, iTeacherAcademy is the best language center. Every English learner should go there because the pleasant environment and the best teachers help students achieve their goals quickly and effectively."</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+                  <img src="https://picsum.photos/seed/user1/100/100" alt="Ogiloy" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm">Ogiloy Vaxabjanova</h4>
+                  <p class="text-xs text-muted">Student</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-[32px] relative reveal-up" style="transition-delay: 0.1s">
+              <div class="flex text-yellow-400 mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="text-slate-700 italic mb-8">"I highly recommend this education center to anyone looking to make significant progress in their English skills. The supportive environment and quality instruction here truly stand out!"</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+                  <img src="https://picsum.photos/seed/user2/100/100" alt="Xusnidaxon" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm">Xusnidaxon Madaminjonova</h4>
+                  <p class="text-xs text-muted">Student</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-50 p-8 rounded-[32px] relative reveal-up" style="transition-delay: 0.2s">
+              <div class="flex text-yellow-400 mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="text-slate-700 italic mb-8">"One of the best place to learn English language, and I advice if you live in Andijan city you have to go there and improve your english skills"</p>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0">
+                  <img src="https://picsum.photos/seed/user3/100/100" alt="Abdullo" class="w-full h-full object-cover" referrerPolicy="no-referrer">
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm">Abdullo Sotvoldiyev</h4>
+                  <p class="text-xs text-muted">Student</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section-padding bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6">
+          <div class="text-center max-w-2xl mx-auto mb-16 reveal-up">
+            <p class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Get in Touch</p>
+            <h2 class="heading-md mb-4">Ready to Start Your Journey?</h2>
+            <p class="text-muted">We're here to help you start your English journey. Visit us or give us a call.</p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-10 rounded-[40px] shadow-xl reveal-left">
+              <div class="space-y-8">
+                <div class="flex items-start gap-6">
+                  <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary flex-shrink-0">
+                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Our Location</h4>
+                    <p class="text-muted">Yangi bozor, Sakura binosi, 3-qavat</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-6">
+                  <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary flex-shrink-0">
+                    <i data-lucide="phone" class="w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-lg mb-1">Phone Number</h4>
+                    <a href="tel:+998975820200" class="text-muted hover:text-primary transition-colors">+998 97 582 02 00</a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-6">
+                  <div class="flex-1">
+                    <h4 class="font-bold text-lg mb-2">Social Media</h4>
+                    <div class="flex flex-col gap-3">
+                      <a href="https://instagram.com/iteacher.academy" target="_blank" class="text-muted hover:text-primary transition-colors text-base font-medium flex items-center gap-2">
+                        Check out our Instagram
+                      </a>
+                      <a href="https://t.me/s/iteacher_academy" target="_blank" class="text-muted hover:text-primary transition-colors text-base font-medium flex items-center gap-2">
+                        Check out our Telegram
+                      </a>
+                      <a href="https://www.youtube.com/@iteacheracademy01" target="_blank" class="text-muted hover:text-primary transition-colors text-base font-medium flex items-center gap-2">
+                        Check out our YouTube
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-[40px] overflow-hidden h-full min-h-[300px] bg-slate-200 relative reveal-right shadow-xl">
+              <div class="absolute inset-0 flex items-center justify-center bg-slate-300">
+                <div class="text-center p-8">
+                  <i data-lucide="map" class="w-16 h-16 text-slate-400 mx-auto mb-4 opacity-50"></i>
+                  <p class="text-slate-600 font-bold text-xl mb-2">Yangi bozor, Sakura binosi</p>
+                  <p class="text-slate-500 mb-6">Find us on the 3rd floor</p>
+                  <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-bold shadow-sm hover:shadow-md transition-all">
+                    Open Google Maps
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-1 lg:col-span-1">
+            <a href="#" class="text-2xl font-bold mb-6 block"><span class="text-primary">i</span>Teacher<span class="text-primary">Academy</span></a>
+            <p class="text-slate-400 mb-8 leading-relaxed">
+              Empowering students through high-quality English education. Join us and unlock your potential today.
+            </p>
+            <div class="flex flex-col gap-3">
+              <a href="https://instagram.com/iteacher.academy" target="_blank" class="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Check out our Instagram</a>
+              <a href="https://t.me/s/iteacher_academy" target="_blank" class="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Check out our Telegram</a>
+              <a href="https://www.youtube.com/@iteacheracademy01" target="_blank" class="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Check out our YouTube</a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+            <ul class="space-y-4">
+              <li><a href="#about" class="text-slate-400 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#courses" class="text-slate-400 hover:text-white transition-colors">Our Courses</a></li>
+              <li><a href="#results" class="text-slate-400 hover:text-white transition-colors">Teachers' Results</a></li>
+              <li><a href="#reviews" class="text-slate-400 hover:text-white transition-colors">Reviews</a></li>
+              <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-6">Contact Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3 text-slate-400">
+                <i data-lucide="map-pin" class="w-4.5 h-4.5 text-primary mt-1 flex-shrink-0"></i>
+                <span>Yangi bozor, Sakura binosi, 3-qavat</span>
+              </li>
+              <li class="flex items-center gap-3 text-slate-400">
+                <i data-lucide="phone" class="w-4.5 h-4.5 text-primary flex-shrink-0"></i>
+                <a href="tel:+998975820200" class="hover:text-white transition-colors">+998 97 582 02 00</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg mb-6">Working Hours</h4>
+            <ul class="space-y-4 text-slate-400">
+              <li class="flex justify-between">
+                <span>Mon - Sat:</span>
+                <span class="text-white font-medium">09:00 - 17:00</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Sunday:</span>
+                <span class="text-primary font-bold">Closed</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+          <p>© <span id="current-year"></span> iTeacherAcademy. All rights reserved.</p>
+          <div class="flex gap-8">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Call Button -->
+    <a href="tel:+998975820200" class="fixed bottom-6 right-6 z-40 md:hidden bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center animate-bounce">
+      <i data-lucide="phone" class="w-6 h-6"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
